@@ -1,6 +1,6 @@
-# OCS 官方文档
+# 文档生成练习
 
-## [docs.ocsjs.com](https://docs.ocsjs.com) 
+## 说明
 
 如果您有任何的建议可以直接提交PR，或者联系作者邮箱进行文档的整改。
 
