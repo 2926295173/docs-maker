@@ -38,7 +38,7 @@ const sidebars = {
     {
       type: 'category',
       label: '更多',
-      items: ['other/api', 'other/FQA'],
+      items: ['other/api', 'other/FQA', 'other/todesk'],
       collapsed: false
     },
     {
