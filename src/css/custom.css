@@ -252,6 +252,22 @@ h2.anchor {
   background: var(--ifm-color-primary-dark);
 }
 
+/* 详细教程按钮下方的“直接下载”小字 */
+.tutorial-card-download {
+  display: block;
+  text-align: right;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tutorial-card-download:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
 
 
 /* 简介页头部：图标 + 文本 左右布局 */

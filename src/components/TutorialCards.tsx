@@ -54,6 +54,7 @@ const AppCard: React.FC = () => (
             <PlatformList keys={['chaoxing', 'yuketang', 'zhijiaoyun', 'icve', 'zhihuishu', 'mooc']} />
         </div>
         <a className="tutorial-card-link" href="/docs/app">📖 详细教程</a>
+        <a className="tutorial-card-download" href="/docs/app#download-list">⬇️ 直接下载软件</a>
     </div>
 );
 
@@ -74,10 +75,11 @@ const ScriptCard: React.FC = () => (
             <p className="platform-title"><strong>适用学习平台：</strong></p>
             <PlatformList keys={['chaoxing', 'yuketang', 'zhijiaoyun', 'icve']} />
             <p className="platform-title"><strong>不支持：</strong></p>
-            <p className="platform-note">以下平台请使用🖥️桌面版</p>
+            <p >以下平台请使用🖥️桌面版</p>
             <PlatformList keys={['zhihuishu', 'mooc']} unsupported />
         </div>
         <a className="tutorial-card-link" href="/docs/script">📖 详细教程</a>
+        <a className="tutorial-card-download" href="/docs/script#install-script">⬇️ 直接安装脚本</a>
     </div>
 );
 
@@ -91,7 +93,7 @@ const MobileCard: React.FC = () => (
             <p className="platform-title"><strong>适用学习平台：</strong></p>
             <PlatformList keys={['chaoxing', 'yuketang', 'zhijiaoyun', 'icve']} />
             <p className="platform-title"><strong>不支持：</strong></p>
-            <p className="platform-note">以下平台请使用🖥️桌面端</p>
+            <p>以下平台请使用🖥️桌面端</p>
             <PlatformList keys={['zhihuishu', 'mooc']} unsupported />
         </div>
         <a className="tutorial-card-link" href="/docs/mobile">📖 详细教程</a>

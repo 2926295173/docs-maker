@@ -196,13 +196,28 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className={styles.videoTutorial}>
                         {videos.map((v) => (
-                            <DocsVideo
+                            <div
                                 key={v.key}
-                                className={`${styles.videoPlayer} ${activeVideo === v.key ? '' : styles.videoPlayerHidden}`}
-                                src={v.src}
-                                poster={v.poster}
-                            />
+                                className={`${styles.videoWrapper} ${activeVideo === v.key ? '' : styles.videoPlayerHidden}`}
+                            >
+                                <span className={styles.videoBadge}>视频教程</span>
+                                <DocsVideo
+                                    className={styles.videoPlayer}
+                                    src={v.src}
+                                    poster={v.poster}
+                                />
+                            </div>
                         ))}
+                        {/* 切换到下一个教程 */}
+                        <button
+                            className={styles.nextVideoBtn}
+                            onClick={() => {
+                                const idx = videos.findIndex((v) => v.key === activeVideo);
+                                switchVideo(videos[(idx + 1) % videos.length].key);
+                            }}
+                        >
+                            下一个教程
+                        </button>
                     </div>
                 </div>
             </section>
