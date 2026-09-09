@@ -26,7 +26,7 @@ const sidebars = {
     },
     {
       type: 'doc',
-      label: '关于OCS',
+      label: '简介&联系方式',
       id: 'about'
     },
     {

@@ -188,6 +188,33 @@ h2.anchor {
   font-size: 0.9rem;
 }
 
+/* 文本后的链接小图标（SVG 文件通过 mask 引用，颜色可随状态变化） */
+.platform-link {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  vertical-align: baseline;
+  text-decoration: none !important;
+  background-color: var(--ifm-color-emphasis-500);
+  -webkit-mask: url("/img/icons/external-link.svg") no-repeat center / contain;
+  mask: url("/img/icons/external-link.svg") no-repeat center / contain;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.platform-link:hover {
+  background-color: var(--ifm-color-primary);
+  transform: translateY(-1px);
+}
+
+.platform-item.platform-unsupported .platform-link:hover {
+  background-color: #dc2626;
+}
+
+[data-theme="dark"] .platform-item.platform-unsupported .platform-link:hover {
+  background-color: #f87171;
+}
+
 .platform-icon {
   width: 24px;
   height: 24px;
@@ -244,6 +271,35 @@ h2.anchor {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* 简介页头部：图标 + 文本 左右布局 */
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 4px 0 12px;
+}
+
+.about-header img {
+  flex-shrink: 0;
+}
+
+.about-header-text h2 {
+  margin: 0 0 4px;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .about-header {
+    gap: 12px;
+  }
+
+  .about-header-text h2 {
+    font-size: 1.25rem;
+  }
+}
+
 /* 联系方式卡片（QQ频道 / QQ群 两栏） */
 .contact-cards {
   display: grid;
@@ -265,9 +321,15 @@ h2.anchor {
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 12px;
   padding: 16px 20px;
-  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+  background: var(
+    --ifm-card-background-color,
+    var(--ifm-background-surface-color)
+  );
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .contact-card:hover {
@@ -424,7 +486,10 @@ h2.anchor {
   padding: 10px 14px;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 10px;
-  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+  background: var(
+    --ifm-card-background-color,
+    var(--ifm-background-surface-color)
+  );
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   font-size: 0.92rem;
 }

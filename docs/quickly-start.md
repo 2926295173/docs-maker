@@ -12,17 +12,17 @@ title: 使用教程
   <!-- <img class="tutorial-card-img" src="/img/app/index.png" alt="桌面端预览图" /> -->
   <h3>🖥️ 桌面端 <span class="tutorial-card-tag">✨ 推荐</span></h3>
   <div class="tutorial-card-body">
-    <p><strong>类型：</strong>电脑软件，适合零基础小白</p>
+    <p><strong>类型：</strong>电脑软件，适合零基础小白 以及 想要多账号/浏览功能的用户</p>
     <p><strong>功能：</strong>一键安装、一键启动、多账号、软件辅助、浏览器多开/分身、网课账号管理、自动登录等功能</p> 
     <p class="card-compare"><strong>对比：</strong>网页版需要手动安装脚本管理器、脚本，以及开发者模式，桌面端一键安装即可使用，并且可绕过智慧树、中国大学MOOC的脚本检测</p>
     <p class="platform-title"><strong>适用学习平台：</strong></p>
     <div class="platform-list">
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/chaoxing.png" alt="" />超星学习通</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/yuketang.png" alt="" />雨课堂（更新中）</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhijiaoyun.png" alt="" />职教云</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/icve.png" alt="" />智慧职教</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhihuishu.png" alt="" />智慧树</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/mooc.png" alt="" />中国大学MOOC</div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/chaoxing.png" alt="" />超星学习通<a class="platform-link" href="https://i.chaoxing.com" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/yuketang.png" alt="" />雨课堂<a class="platform-link" href="https://www.yuketang.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a>（更新中）</div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhijiaoyun.png" alt="" />职教云<a class="platform-link" href="https://zjy2.icve.com.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/icve.png" alt="" />智慧职教<a class="platform-link" href="https://www.icve.com.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhihuishu.png" alt="" />智慧树<a class="platform-link" href="https://www.zhihuishu.com" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/mooc.png" alt="" />中国大学MOOC<a class="platform-link" href="https://www.icourse163.org" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
     </div>
   </div>
   <a class="tutorial-card-link" href="/docs/app">🔗 使用教程</a>
@@ -32,21 +32,21 @@ title: 使用教程
   <!-- <img class="tutorial-card-img" src="/img/script/showcase/homepage.png" alt="网页版预览图" /> -->
   <h3>🌐 网页版</h3>
   <div class="tutorial-card-body">
-    <p><strong>类型：</strong>网页版网课脚本，适合电脑自用浏览器安装了脚本管理器（如：脚本猫、Tampermonkey）的用户</p>
+    <p><strong>类型：</strong>网页版网课脚本，适合电脑自用浏览器安装了脚本管理器（如：脚本猫<a class="platform-link" href="https://scriptcat.org" target="_blank" rel="noopener noreferrer" title="打开 脚本猫 官网"></a>、篡改猴<a class="platform-link" href="https://www.tampermonkey.net" target="_blank" rel="noopener noreferrer" title="打开 篡改猴 官网"></a>）的用户</p>
     <p><strong>功能：</strong>自动刷课、自动答题、自动签到、自动播放视频、自动翻页、自动翻阅 PPT 等功能</p>
        <p class="card-compare"><strong>对比：</strong>如果仅用超星、职教云等简单网课，或者个人使用可以选择网页版更加轻量化。</p>
     <p class="platform-title"><strong>适用学习平台：</strong></p>
     <div class="platform-list">
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/chaoxing.png" alt="" />超星学习通</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/yuketang.png" alt="" />雨课堂（更新中）</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhijiaoyun.png" alt="" />职教云</div>
-      <div class="platform-item"><img class="platform-icon" src="/img/platforms/icve.png" alt="" />智慧职教</div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/chaoxing.png" alt="" />超星学习通<a class="platform-link" href="https://i.chaoxing.com" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/yuketang.png" alt="" />雨课堂<a class="platform-link" href="https://www.yuketang.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a>（更新中）</div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/zhijiaoyun.png" alt="" />职教云<a class="platform-link" href="https://zjy2.icve.com.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item"><img class="platform-icon" src="/img/platforms/icve.png" alt="" />智慧职教<a class="platform-link" href="https://www.icve.com.cn" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
     </div>
     <p class="platform-title"><strong>不支持：</strong></p>
     <p class="platform-note">以下平台请使用🖥️桌面端</p>
     <div class="platform-list">
-      <div class="platform-item platform-unsupported"><img class="platform-icon" src="/img/platforms/zhihuishu.png" alt="" />智慧树</div>
-      <div class="platform-item platform-unsupported"><img class="platform-icon" src="/img/platforms/mooc.png" alt="" />中国大学MOOC</div>
+      <div class="platform-item platform-unsupported"><img class="platform-icon" src="/img/platforms/zhihuishu.png" alt="" />智慧树<a class="platform-link" href="https://www.zhihuishu.com" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
+      <div class="platform-item platform-unsupported"><img class="platform-icon" src="/img/platforms/mooc.png" alt="" />中国大学MOOC<a class="platform-link" href="https://www.icourse163.org" target="_blank" rel="noopener noreferrer" title="打开平台官网"></a></div>
     </div>
   </div>
   <a class="tutorial-card-link" href="/docs/script">🔗 使用教程</a>

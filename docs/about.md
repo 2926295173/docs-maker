@@ -1,21 +1,25 @@
 ---
-title: 关于OCS
+title: 简介&联系方式
 hide_title: true
 ---
 
 import ScriptMetadata from './ScriptMetadata.mdx';
 
-<div align="center">
+<div class="about-header">
 
-<img src="https://cdn.ocsjs.com/resources/img/logo.jpg" width="124" height="124" style={{borderRadius:"50%"}} />
+<img src="https://cdn.ocsjs.com/resources/img/logo.jpg" width="96" height="96" style={{borderRadius:"50%"}} />
 
-# OCS 网课助手
+<div class="about-header-text">
+
+## OCS 网课助手
 
 <ScriptMetadata />
 
 </div>
+
+</div>
   
-## 交流方式
+## 联系方式
 
 > 遇到不会的可以看 `疑问解答`，或者加群询问哦~
 
