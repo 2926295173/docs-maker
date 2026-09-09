@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
 import { TutorialCard } from '../components/TutorialCards';
 import DocsVideo from '../components/DocsVideo';
+import GitHubInfo from '../components/GitHubInfo';
+import LazySection from '../components/LazySection';
 
 const floatButtons = [
-    { label: '❓ 如何关闭脚本', href: '/docs/script#update-and-manage', top: '5%', left: '2%', rotate: -7, fontSize: 0.92, opacity: 0.85, delay: 0, duration: 5.2 },
-    { label: '📥 如何下载脚本', href: '/docs/script', top: '3%', left: '66%', rotate: 5, fontSize: 0.78, opacity: 0.7, delay: 1.3, duration: 4.8 },
-    { label: '💻 怎么下载软件', href: '/docs/app', top: '72%', left: '0%', rotate: 3, fontSize: 0.84, opacity: 0.75, delay: 0.7, duration: 5.5 },
-    { label: '🔄 如何更新', href: '/docs/update', top: '68%', left: '70%', rotate: -4, fontSize: 0.72, opacity: 0.82, delay: 2.1, duration: 4.5 },
+    { label: '❓ 如何关闭/删除脚本？', href: '/docs/script#update-and-manage', top: '5%', left: '2%', rotate: -7, fontSize: 0.92, opacity: 0.85, delay: 0, duration: 5.2 },
+    { label: '📥 如何下载脚本？', href: '/docs/script', top: '3%', left: '66%', rotate: 5, fontSize: 0.78, opacity: 0.7, delay: 1.3, duration: 4.8 },
+    { label: '❓ 为什么脚本不显示？', href: '/docs/issues/2025', top: '72%', left: '0%', rotate: 3, fontSize: 0.84, opacity: 0.75, delay: 0.7, duration: 5.5 },
+    { label: '🔄 如何更新？', href: '/docs/update', top: '68%', left: '70%', rotate: -4, fontSize: 0.72, opacity: 0.82, delay: 2.1, duration: 4.5 },
 ];
 
 const showCases = [
@@ -141,7 +143,7 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className={styles.heroActions}>
                         <a href="/#tutorial" className={styles.primaryButton}> 📖 使用教程</a>
-                        <a href="/docs/about" className={styles.secondaryButton}> 📃 简介&联系 </a>
+                        <a href="/docs/about" className={styles.secondaryButton}> 💬 简介&联系 </a>
                     </div>
                     <div className={styles.heroActions}>
                         <a href="/docs/issues/2025" className={styles.secondaryButton}> ⚠️ 关于2025年多个刷课问题公示</a>
@@ -271,28 +273,45 @@ const HomePage: React.FC = () => {
                         {/* Explore how our tools power the world's most innovative applications */}
                     </p>
                 </div>
-                <div className={styles.showcaseGrid}>
+                {/* 懒加载：滚动到区域附近时才渲染截图 */}
+                <LazySection minHeight={420}>
+                    <div className={styles.showcaseGrid}>
 
-                    {
-                        (showCases.map(s => (
-                            <div className={styles.showcaseItem} key={s.label}>
-                                <div className={styles.browserBar}>
-                                    <span className={`${styles.browserDot} ${styles.dotRed}`}></span>
-                                    <span className={`${styles.browserDot} ${styles.dotYellow}`}></span>
-                                    <span className={`${styles.browserDot} ${styles.dotGreen}`}></span>
-                                    <span className={styles.browserTitle}>{s.label}</span>
-                                </div>
-                                <div className={styles.showcaseImage} onClick={() => setPreviewImage(s)}>
-                                    <img className={styles.showCaseImg} src={s.src} alt={s.label}></img>
-                                    <div className={styles.zoomMask}>
-                                        <span>🔍 点击放大</span>
+                        {
+                            (showCases.map(s => (
+                                <div className={styles.showcaseItem} key={s.label}>
+                                    <div className={styles.browserBar}>
+                                        <span className={`${styles.browserDot} ${styles.dotRed}`}></span>
+                                        <span className={`${styles.browserDot} ${styles.dotYellow}`}></span>
+                                        <span className={`${styles.browserDot} ${styles.dotGreen}`}></span>
+                                        <span className={styles.browserTitle}>{s.label}</span>
+                                    </div>
+                                    <div className={styles.showcaseImage} onClick={() => setPreviewImage(s)}>
+                                        <img className={styles.showCaseImg} src={s.src} alt={s.label} loading="lazy"></img>
+                                        <div className={styles.zoomMask}>
+                                            <span>🔍 点击放大</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )))
-                    }
+                            )))
+                        }
 
+                    </div>
+                </LazySection>
+            </section>
+
+            {/* GitHub 开源项目信息 */}
+            <section id="github" className={styles.githubSection}>
+                <div className={styles.sectionHeader}>
+                    <h2 className={styles.sectionTitle}>GitHub 项目开源</h2>
+                    <p className={styles.sectionSubtitle}>
+                        OCS 网课助手完全开源，欢迎 Star、Fork 与贡献代码
+                    </p>
                 </div>
+                {/* 懒加载：滚动到区域附近时才请求 GitHub 接口 */}
+                <LazySection minHeight={560}>
+                    <GitHubInfo />
+                </LazySection>
             </section>
 
             {/* 截图放大预览灯箱 */}

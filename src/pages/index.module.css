@@ -674,6 +674,12 @@
   object-fit: contain;
 }
 
+/* GitHub 项目信息区域 */
+.githubSection {
+  padding: 5rem 5%;
+  background-color: var(--light-bg);
+}
+
 /* 页脚 */
 .footer {
   background: #303846;
