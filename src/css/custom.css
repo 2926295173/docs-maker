@@ -59,3 +59,385 @@ h2.anchor {
 .theme-doc-markdown a {
   text-decoration: underline;
 }
+
+/* 使用教程卡片 */
+.tutorial-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+/* 小屏幕下回到单列，移动端卡片自然位于底部 */
+@media (max-width: 768px) {
+  .tutorial-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tutorial-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: var(
+    --ifm-card-background-color,
+    var(--ifm-background-surface-color)
+  );
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-card-img {
+  width: calc(100% + 40px);
+  max-width: none;
+  margin: -16px -20px 12px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.tutorial-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--ifm-color-emphasis-300);
+  font-size: 1.15rem;
+}
+
+.tutorial-card-body {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.tutorial-card-body p {
+  margin-bottom: 8px;
+}
+
+/* 推荐 tag 标签 */
+.tutorial-card-tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ifm-color-primary-darker);
+  background: var(--ifm-color-primary-lightest);
+  border: 1px solid var(--ifm-color-primary-light);
+}
+
+[data-theme="dark"] .tutorial-card-tag {
+  color: var(--ifm-color-primary-lightest);
+  background: rgba(96, 165, 250, 0.15);
+  border-color: var(--ifm-color-primary);
+}
+
+/* 卡片内对比文案高亮 */
+.card-compare {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border-left: 3px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  font-size: 0.88rem;
+}
+
+.card-compare strong {
+  color: #d97706;
+}
+
+[data-theme="dark"] .card-compare {
+  background: rgba(245, 158, 11, 0.15);
+}
+
+[data-theme="dark"] .card-compare strong {
+  color: #fbbf24;
+}
+
+/* 平台列表 */
+.platform-title {
+  margin-bottom: 4px !important;
+}
+
+.platform-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.platform-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.platform-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* 不支持的平台：重点高亮 */
+.platform-item.platform-unsupported {
+  color: #dc2626;
+  font-weight: 600;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px dashed rgba(220, 38, 38, 0.4);
+}
+
+/* 平台提示小字 */
+.platform-note {
+  margin-top: -4px;
+  margin-bottom: 8px !important;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+[data-theme="dark"] .platform-item.platform-unsupported {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.tutorial-card-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.tutorial-card-link:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+[data-theme="dark"] .tutorial-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .tutorial-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 联系方式卡片（QQ频道 / QQ群 两栏） */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+@media (max-width: 768px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--ifm-color-emphasis-300);
+  font-size: 1.15rem;
+  align-self: stretch;
+  text-align: center;
+}
+
+.contact-card-desc {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  text-align: center;
+}
+
+.contact-card-qr {
+  border-radius: 8px;
+  margin: 4px 0 12px;
+}
+
+.contact-card-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.contact-card-btn:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* QQ群列表 */
+.qq-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.qq-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.qq-group-item.qq-group-full span {
+  color: var(--ifm-color-emphasis-500);
+  text-decoration: line-through;
+}
+
+/* 一键加群按钮 */
+.qq-join-btn {
+  flex-shrink: 0;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.qq-join-btn:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+[data-theme="dark"] .contact-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .contact-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 历史进程时间轴 */
+.timeline {
+  position: relative;
+  margin: 16px 0 24px;
+  padding-left: 24px;
+}
+
+/* 竖线 */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--ifm-color-primary-light),
+    var(--ifm-color-emphasis-300)
+  );
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* 节点圆点 */
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-background-color);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
+}
+
+.timeline-date {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary-darker);
+  background: var(--ifm-color-primary-lightest);
+}
+
+.timeline-content {
+  padding: 10px 14px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.92rem;
+}
+
+.timeline-content p {
+  margin-bottom: 4px;
+}
+
+.timeline-content p:last-child {
+  margin-bottom: 0;
+}
+
+[data-theme="dark"] .timeline-date {
+  color: var(--ifm-color-primary-lightest);
+  background: rgba(96, 165, 250, 0.15);
+}
