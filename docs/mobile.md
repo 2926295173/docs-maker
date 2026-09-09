@@ -5,6 +5,8 @@ tags:
   - OCS脚本
 ---
 
+import DocsVideo from '../src/components/DocsVideo.tsx';
+
 > 适用于手机、平板等移动设备使用 OCS 脚本的教程
 
 ## 视频教程
@@ -40,4 +42,4 @@ tags:
 
 :::
 
-<video src="https://cdn.ocsjs.com/public/mobile_guide.mp4" poster="https://cdn.ocsjs.com/public/video_guide_mobile_poster.png" width="100%" height="600px" style={{background: 'black', borderRadius: '4px', border:'1px solid black'}} controls="controls" />
+<DocsVideo src="https://cdn.ocsjs.com/public/mobile_guide.mp4" poster="https://cdn.ocsjs.com/public/video_guide_mobile_poster.png" maxHeight="600px" />

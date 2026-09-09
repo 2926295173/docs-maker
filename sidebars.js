@@ -21,11 +21,6 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'doc',
-      label: '使用教程',
-      id: 'quickly-start'
-    },
-    {
-      type: 'doc',
       label: '简介&联系方式',
       id: 'about'
     },

@@ -7,7 +7,7 @@ const OCS_VERSION = '3.17.4';
 const docs = [
   {
     label: '使用教程',
-    to: '/docs/quickly-start'
+    to: '/#tutorial'
   },
   {
     label: '脚本教程',
@@ -85,6 +85,35 @@ const config = {
     locales: ['zh-CN']
   },
 
+  plugins: [
+    // 生产构建：生成静态重定向页面（plugin-client-redirects 仅 postBuild 生效）
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // /docs/quickly-start 已合并到首页教程区域，重定向防止第三方引用 404
+          { from: '/docs/quickly-start', to: '/#tutorial' }
+        ]
+      }
+    ],
+    // 开发/生产 SPA：注册真实路由，修复开发模式下直接访问 /docs/quickly-start 404 的问题
+    function quicklyStartRedirectPlugin() {
+      return {
+        name: 'quickly-start-redirect',
+        contentLoaded({ actions }) {
+          actions.addRoute({
+            path: '/docs/quickly-start',
+            component: require.resolve('./src/components/RedirectToTutorial.tsx'),
+            exact: true
+          });
+        }
+      };
+    }
+  ],
+
+  // 客户端模块：处理路由跳转后的锚点自动滚动
+  clientModules: [require.resolve('./src/clientModules/hashScroll.ts')],
+
   presets: [
     [
       'classic',
@@ -129,13 +158,13 @@ const config = {
           {
             label: '使用教程',
             position: 'right',
-            to: '/docs/quickly-start'
+            to: '/#tutorial'
           },
 
           {
             label: '联系方式',
             position: 'right',
-            to: '/docs/about#%E4%BA%A4%E6%B5%81%E6%96%B9%E5%BC%8F'
+            to: '/docs/about#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F'
           },
           // {
           //   label: '博客',

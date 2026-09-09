@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
+import { TutorialCard } from '../components/TutorialCards';
+import DocsVideo from '../components/DocsVideo';
 
 const floatButtons = [
     { label: '❓ 如何关闭脚本', href: '/docs/script#update-and-manage', top: '5%', left: '2%', rotate: -7, fontSize: 0.92, opacity: 0.85, delay: 0, duration: 5.2 },
@@ -27,17 +29,41 @@ const HomePage: React.FC = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    // 截图放大预览
+    const [previewImage, setPreviewImage] = useState<{ src: string; label: string } | null>(null);
+
+    // ESC 关闭预览
+    useEffect(() => {
+        if (!previewImage) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setPreviewImage(null);
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [previewImage]);
+
+    // 直接通过 url + #锚点 访问时，水合完成后自动滚动到目标区域（hash需解码匹配中文id）
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (!hash) return;
+        const id = decodeURIComponent(hash.slice(1));
+        const timer = setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+        return () => clearTimeout(timer);
+    }, []);
+
     const menus = [
         {
             href: '/',
             label: '首页'
         },
         {
-            href: '/docs/quickly-start',
+            href: '/#tutorial',
             label: '使用教程'
         },
         {
-            href: '/docs/about#%E4%BA%A4%E6%B5%81%E6%96%B9%E5%BC%8F',
+            href: '/docs/about#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F',
             label: '联系方式'
         },
         // {
@@ -49,6 +75,21 @@ const HomePage: React.FC = () => {
             label: 'Github'
         }
     ]
+
+    // 视频教程：与各教程文档（app/script/mobile）中的视频一致
+    const videos = [
+        { key: 'app', label: '🖥️ 桌面版', src: 'https://cdn.ocsjs.com/public/desktop_guide.mp4', poster: 'https://cdn.ocsjs.com/public/vide_guide_desktop_poster.png' },
+        { key: 'script', label: '🌐 网页版', src: 'https://cdn.ocsjs.com/public/script_guide.mp4', poster: 'https://cdn.ocsjs.com/public/video_guide_poster.png' },
+        { key: 'mobile', label: '📱 手机&平板', src: 'https://cdn.ocsjs.com/public/mobile_guide.mp4', poster: 'https://cdn.ocsjs.com/public/video_guide_mobile_poster.png' }
+    ];
+    const [activeVideo, setActiveVideo] = useState('app');
+    const videoAreaRef = useRef<HTMLDivElement>(null);
+
+    // 切换视频时暂停其他视频，避免后台继续播放消耗流量
+    const switchVideo = (key: string) => {
+        videoAreaRef.current?.querySelectorAll('video').forEach((v) => v.pause());
+        setActiveVideo(key);
+    };
 
     return (
         <div className={styles.container}>
@@ -89,22 +130,22 @@ const HomePage: React.FC = () => {
             <section id="home" className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>
-                        OCS 网课助手
+                        <img src="/logos/ocs.png" width="64" height="64" style={{ borderRadius: "50%", marginRight: '12px' }} />
+                        <span> OCS 网课助手 </span>
                     </h1>
-                    <p className={styles.heroSubtitle}>
+                    <div className={styles.heroSubtitle}>
                         专注于帮助大学生从网课中释放出来。让自己的时间把握在自己的手中。
-                    </p>
+                    </div>
+                    <div className={styles.trustedBadge}>
+                        <span>拥有千万下载量，百万用户推荐使用。</span>
+                    </div>
                     <div className={styles.heroActions}>
-                        <a href="/docs/quickly-start" className={styles.primaryButton}> 📖 使用教程</a>
-                        <a href="/docs/script" className={styles.secondaryButton}> 📥 刷课脚本 </a>
-                        <a href="/docs/app" className={styles.secondaryButton}> 🖥️ 桌面软件 </a>
+                        <a href="/#tutorial" className={styles.primaryButton}> 📖 使用教程</a>
+                        <a href="/docs/about" className={styles.secondaryButton}> 📃 简介&联系 </a>
                     </div>
                     <div className={styles.heroActions}>
                         <a href="/docs/issues/2025" className={styles.secondaryButton}> ⚠️ 关于2025年多个刷课问题公示</a>
 
-                    </div>
-                    <div className={styles.trustedBadge}>
-                        <span>拥有千万下载量，百万用户推荐使用。</span>
                     </div>
                 </div>
                 <div className={styles.heroVisual}>
@@ -132,6 +173,41 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
+            {/* 使用教程：整体切换 tab + 教程卡片 + 视频（功能特性上方） */}
+            <section id="tutorial" className={styles.tutorialSection} ref={videoAreaRef}>
+                <div className={styles.sectionHeader}>
+                    <h2 className={styles.sectionTitle}>使用教程</h2>
+                </div>
+                {/* 整体切换 tab：同时切换教程卡片与视频 */}
+                <div className={styles.videoTabs}>
+                    {videos.map((v) => (
+                        <button
+                            key={v.key}
+                            className={`${styles.videoTabBtn} ${activeVideo === v.key ? styles.videoTabBtnActive : ''}`}
+                            onClick={() => switchVideo(v.key)}
+                        >
+                            {v.label}
+                        </button>
+                    ))}
+                </div>
+                <div className={styles.heroPanel}>
+                    <div className={styles.heroCards}>
+                        <TutorialCard type={activeVideo as 'app' | 'script' | 'mobile'} />
+                    </div>
+                    <div className={styles.videoTutorial}>
+                        {videos.map((v) => (
+                            <DocsVideo
+                                key={v.key}
+                                className={`${styles.videoPlayer} ${activeVideo === v.key ? '' : styles.videoPlayerHidden}`}
+                                src={v.src}
+                                poster={v.poster}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
             {/* 特性区域 */}
             <section id="features" className={styles.features}>
                 <div className={styles.sectionHeader}>
@@ -157,16 +233,9 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className={styles.featureCard}>
                         <div className={`${styles.featureIcon} ${styles.icon3}`}> 🖥️</div>
-                        <h3 className={styles.featureTitle}>自动学习</h3>
+                        <h3 className={styles.featureTitle}>自动学习 & 自动答题</h3>
                         <p className={styles.featureDesc}>
-                            全自动完成视频播放、章节测验、课件阅读、弹窗答题等全类型学习任务。
-                        </p>
-                    </div>
-                    <div className={styles.featureCard}>
-                        <div className={`${styles.featureIcon} ${styles.icon5}`}>📝</div>
-                        <h3 className={styles.featureTitle}>自动答题</h3>
-                        <p className={styles.featureDesc}>
-                            自动答题与在线搜题，高效完成作业考试，提升答题效率，同时有题库缓存，重复搜题无需访问云端。
+                            全自动完成视频播放、章节测验、课件阅读、弹窗答题等全类型学习任务。支持自动答题与在线搜题，高效完成作业考试，同时配备题库缓存，重复搜题无需访问云端。
                         </p>
                     </div>
                     <div className={styles.featureCard}>
@@ -190,22 +259,40 @@ const HomePage: React.FC = () => {
                 <div className={styles.showcaseGrid}>
 
                     {
-                        (showCases.map(s => (<>
-                            <div className={styles.showcaseItem}>
-                                <div className={styles.showcaseImage}>
-                                    <img className={styles.showCaseImg} src={s.src}></img>
+                        (showCases.map(s => (
+                            <div className={styles.showcaseItem} key={s.label}>
+                                <div className={styles.browserBar}>
+                                    <span className={`${styles.browserDot} ${styles.dotRed}`}></span>
+                                    <span className={`${styles.browserDot} ${styles.dotYellow}`}></span>
+                                    <span className={`${styles.browserDot} ${styles.dotGreen}`}></span>
+                                    <span className={styles.browserTitle}>{s.label}</span>
                                 </div>
-                                <div className={styles.showcaseOverlay}>
-                                    <h3>{s.label}</h3>
-                                    {/* <p>desc</p> */}
+                                <div className={styles.showcaseImage} onClick={() => setPreviewImage(s)}>
+                                    <img className={styles.showCaseImg} src={s.src} alt={s.label}></img>
+                                    <div className={styles.zoomMask}>
+                                        <span>🔍 点击放大</span>
+                                    </div>
                                 </div>
                             </div>
-
-                        </>)))
+                        )))
                     }
 
                 </div>
             </section>
+
+            {/* 截图放大预览灯箱 */}
+            {previewImage && (
+                <div className={styles.lightbox} onClick={() => setPreviewImage(null)}>
+                    <button className={styles.lightboxClose} aria-label="关闭">✕</button>
+                    <img
+                        className={styles.lightboxImg}
+                        src={previewImage.src}
+                        alt={previewImage.label}
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <div className={styles.lightboxCaption}>{previewImage.label}</div>
+                </div>
+            )}
 
             {/* 页脚 */}
             <footer id="contact" className={styles.footer}>
@@ -219,11 +306,11 @@ const HomePage: React.FC = () => {
                     <div className={styles.footerLinks}>
                         <div className={styles.linkColumn}>
                             <h4>快捷访问</h4>
-                            <a href="/docs/quickly-start">使用教程</a>
+                            <a href="/#tutorial">使用教程</a>
                             <a href="https://docs.ocsjs.com/docs/script">脚本教程</a>
                             <a href="https://docs.ocsjs.com/docs/app">软件教程</a>
                             <a href="https://docs.ocsjs.com/docs/work">自动答题教程</a>
-                            <a href="/docs/about#%E4%BA%A4%E6%B5%81%E6%96%B9%E5%BC%8F">联系方式</a>
+                            <a href="/docs/about#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F">联系方式</a>
 
 
                         </div>

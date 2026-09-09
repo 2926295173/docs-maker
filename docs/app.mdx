@@ -3,27 +3,21 @@ title: 软件教程
 ---
 
 import { AppDownloadCards } from "../src/components/AppDownloadCards.tsx";
+import ImagePreview from "../src/components/ImagePreview.tsx";
+import DocsVideo from "../src/components/DocsVideo.tsx";
 
  
-手机\平板等设备请查看：[https://docs.ocsjs.com/docs/mobile](/docs/mobile)
-
-## OCS 桌面端软件
-
+📱 手机&平板 等设备请查看此处教程：[https://docs.ocsjs.com/docs/mobile](/docs/mobile)
  
-浏览器多开/分身、网课账号管理、自动登录、脚本启动器、软件辅助、一键刷课、傻瓜式操作
- 
- 
-## 视频教程
+## 视频教程 {#video-tutorial}
 
 :::info 1 分钟通关 OCS 网课助手 桌面软件方法！
 
-:::
- 
-> 不想安装软件，可以看另外的脚本安装教程
+::: 
 
-<video src="https://cdn.ocsjs.com/public/desktop_guide.mp4"   poster="https://cdn.ocsjs.com/public/vide_guide_desktop_poster.png" width="100%" controls="controls"  />
+<DocsVideo src="https://cdn.ocsjs.com/public/desktop_guide.mp4" poster="https://cdn.ocsjs.com/public/vide_guide_desktop_poster.png" width="50%" />
 
- ## 下载列表
+## 下载列表 {#download-list}
 
 <AppDownloadCards />
 
@@ -40,8 +34,8 @@ import { AppDownloadCards } from "../src/components/AppDownloadCards.tsx";
  
 **软件功能概览：**
 
+- `保姆式一键安装`：包括： 浏览器拓展，用户脚本等，自动开启浏览器开发者模式，自动启用拓展等等
 - `浏览器多开/分身`：每个浏览器账号数据互相隔离，可实现多个浏览器不同账号登录。
-- `傻瓜式一键安装所有运行环境`：包括： 浏览器拓展，用户脚本等
 - `浏览器管理`：支持浏览器增删改查，浏览器标签分类，浏览器备注说明。
 - `浏览器监控`：多个浏览器图像查看，并支持单个点击置顶进行操作，避免全部浏览器堆在一个显示器上查找困难。
 - `OCS全局配置同步`：OCS 软件可以支持 OCS 脚本的所有配置同步以及独立配置，实现多个浏览器的 OCS 脚本配置同步，例如：`题库配置全局同步`，无需一个个进行设置。
@@ -53,15 +47,13 @@ import { AppDownloadCards } from "../src/components/AppDownloadCards.tsx";
 
 **图片预览：**
 
-<div style={{textAlign: "center"}}>
+<ImagePreview
+  images={[
+    { src: "/img/app/index.png", label: "软件首页" },
+    { src: "/img/app/init_show_case.png", label: "初始化界面" },
+    { src: "/img/app/app_list.png", label: "应用列表" },
+    { src: "/img/app/script_list.png", label: "脚本列表" }
+  ]}
+/>
 
-<img width="50%" src={require("/static/img/app/index.png").default} />
-
-<img width="50%" src={require("/static/img/app/init_show_case.png").default} />
-
-<img width="50%" src={require("/static/img/app/app_list.png").default} />
-
-<img width="50%" src={require("/static/img/app/script_list.png").default} />
-
-</div> 
  
