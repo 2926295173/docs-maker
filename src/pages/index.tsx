@@ -84,7 +84,10 @@ const HomePage: React.FC = () => {
         { key: 'script', label: '🌐 网页版', src: 'https://cdn.ocsjs.com/public/script_guide.mp4', poster: 'https://cdn.ocsjs.com/public/video_guide_poster.png' },
         { key: 'mobile', label: '📱 手机&平板', src: 'https://cdn.ocsjs.com/public/mobile_guide.mp4', poster: 'https://cdn.ocsjs.com/public/video_guide_mobile_poster.png' }
     ];
-    const [activeVideo, setActiveVideo] = useState('app');
+    // 根据分辨率自动选择默认教程：小于 1k 宽度默认显示手机&平板教程
+    const [activeVideo, setActiveVideo] = useState(() =>
+        typeof window !== 'undefined' && window.innerWidth < 1000 ? 'mobile' : 'app'
+    );
     const videoAreaRef = useRef<HTMLDivElement>(null);
 
     // 切换视频时暂停其他视频，避免后台继续播放消耗流量
@@ -108,18 +111,29 @@ const HomePage: React.FC = () => {
 
                 {/* 手机端菜单按钮 */}
                 <button
+                    type="button"
                     className={styles.mobileMenuButton}
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="打开菜单"
+                    onClick={() => setMobileMenuOpen((v) => !v)}
                 >
                     ☰
                 </button>
 
                 {/* 手机端下拉菜单 */}
-                <div className={`${styles.mobileNav} ${mobileMenuOpen ? styles.mobileNavOpen : ''}`}>
-                    {
-                        (menus.map((m, index) => (<a className={`${styles.mobileNavLink} ${index === 0 ? styles.active : ''}`} href={m.href}>{m.label}</a>)))
-                    }
-                </div>
+                {mobileMenuOpen && (
+                    <div className={styles.mobileNav}>
+                        {menus.map((m, index) => (
+                            <a
+                                key={m.href}
+                                className={`${styles.mobileNavLink} ${index === 0 ? styles.active : ''}`}
+                                href={m.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                {m.label}
+                            </a>
+                        ))}
+                    </div>
+                )}
 
                 <nav className={styles.nav}>
                     {
@@ -132,7 +146,6 @@ const HomePage: React.FC = () => {
             <section id="home" className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>
-                        <img src="/logos/ocs.png" width="64" height="64" style={{ borderRadius: "50%", marginRight: '12px' }} />
                         <span> OCS 网课助手 </span>
                     </h1>
                     <div className={styles.heroSubtitle}>

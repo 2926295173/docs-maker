@@ -223,3 +223,47 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 移动端：数据卡片 2x2 双栏，issue/pr 条目防溢出 */
+@media (max-width: 640px) {
+  .github-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .github-stat-card {
+    padding: 1rem 0.5rem;
+    border-radius: 12px;
+  }
+
+  .github-stat-value {
+    font-size: 1.4rem;
+  }
+
+  .github-stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* 防止长标题撑破宽度 */
+  .github-detail-grid,
+  .github-activity-grid {
+    gap: 1rem;
+  }
+
+  .github-panel {
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .github-activity-item {
+    flex-wrap: wrap;
+  }
+
+  .github-activity-item-title {
+    flex: 1 1 100%;
+    order: 3;
+    white-space: normal;
+    word-break: break-all;
+  }
+}
