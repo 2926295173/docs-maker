@@ -737,3 +737,71 @@ h2.anchor {
 .docs-video-close:hover {
   opacity: 1;
 }
+
+/* 快捷更新/安装弹窗 */
+.quick-install-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(10, 14, 23, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.quick-install-dialog {
+  width: 100%;
+  max-width: 960px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ifm-background-surface-color);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.quick-install-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.quick-install-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.quick-install-close {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-600);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.quick-install-close:hover {
+  opacity: 1;
+}
+
+.quick-install-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+}
+
+/* 半宽视频：小屏下自动铺满 */
+.docs-video-half {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .docs-video-half {
+    width: 100%;
+  }
+}

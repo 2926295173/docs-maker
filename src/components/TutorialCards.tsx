@@ -79,7 +79,7 @@ const ScriptCard: React.FC = () => (
             <PlatformList keys={['zhihuishu', 'mooc']} unsupported />
         </div>
         <a className="tutorial-card-link" href="/docs/script">📖 详细教程</a>
-        <a className="tutorial-card-download" href="/docs/script#install-script">⬇️ 直接安装脚本</a>
+        <a className="tutorial-card-download" href="/docs/script#quick-install">⬇️ 直接安装脚本</a>
     </div>
 );
 

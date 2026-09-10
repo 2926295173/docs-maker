@@ -4,6 +4,9 @@
  * - hash 可能是 URL 编码（如中文锚点 %E8%81%94...），需要解码后匹配元素 id
  */
 export function onRouteDidUpdate({ location }: { location: Location }) {
+    // 广播路由更新事件，供 QuickInstall 等组件检测锚点变化
+    window.dispatchEvent(new CustomEvent('ocs-route-update'));
+
     const hash = location.hash;
     if (!hash) return;
 

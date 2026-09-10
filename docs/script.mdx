@@ -7,6 +7,7 @@ tags:
 
 import { ScriptDownloadCards } from '../src/components/ScriptDownloadCards.tsx';  
 import DocsVideo from '../src/components/DocsVideo.tsx';
+import QuickInstall from '../src/components/QuickInstall.tsx';
 import ScriptInstallAlert from './script.install.alert.mdx';
 import Divider from '@mui/material/Divider';
 import ScriptMetadata from './ScriptMetadata.mdx';
@@ -23,13 +24,12 @@ import OpenDevMode from './open.dev.mode.mdx';
 
 :::
 
-<DocsVideo src="https://cdn.ocsjs.com/public/script_guide.mp4" poster="https://cdn.ocsjs.com/public/video_guide_poster.png" width="50%" />
+<DocsVideo src="https://cdn.ocsjs.com/public/script_guide.mp4" poster="https://cdn.ocsjs.com/public/video_guide_poster.png" className="docs-video-half" />
 
-## 快捷更新/安装 {#quick-install}
+{/* 快捷更新/安装：默认隐藏，检测到 #quick-install 锚点时以弹窗显示 */}
+<span id="quick-install" style={{display:'none'}}></span>
 
-<Divider style={{margin: '12px 0px'}}>快捷更新/安装</Divider>
-  
-<ScriptDownloadCards />
+<QuickInstall />
  
 
 <Divider style={{margin: '12px 0px'}}>教程目录</Divider>
