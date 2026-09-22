@@ -159,7 +159,11 @@ const HomePage: React.FC = () => {
                         <a href="/docs/about" className={styles.secondaryButton}> 💬 简介&联系 </a>
                     </div>
                     <div className={styles.heroActions}>
-                        <a href="/docs/issues/2025" className={styles.secondaryButton}> ⚠️ 关于2025年多个刷课问题公示</a>
+                        <a href="/docs/script#quick-install" className={`${styles.secondaryButton} ${styles.smallButton}`}> 📥 快捷安装 刷课脚本 </a>
+                        <a href="/docs/app#download-list" className={`${styles.secondaryButton} ${styles.smallButton}`}> 🖥️ 快捷下载 桌面软件 </a>
+                    </div>
+                    <div className={styles.heroActions}>
+                        <a href="/docs/issues/2025" className={`${styles.secondaryButton} ${styles.smallButton}`}> ⚠️ 关于2025年多个刷课问题公示</a>
 
                     </div>
                 </div>

@@ -213,6 +213,13 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* 小号次级按钮：与上方大按钮做层级区分 */
+.smallButton {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
 .trustedBadge {
   color: var(--light-text-primary);
   font-size: 0.9rem;
